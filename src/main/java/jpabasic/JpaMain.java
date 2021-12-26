@@ -44,15 +44,30 @@ public class JpaMain {
 
 //            System.out.println("result = " + (findMember1 == findMember2));
 
+            //동일성 보장
 //            Member member1 = new Member(150L, "A");
 //            Member member2 = new Member(160L, "B");
 //
 //            em.persist(member1);
 //            em.persist(member2);
-            //영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZZ");
+            //변경 감지
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("ZZZZZZ");
 
+            //플러쉬
+//            Member member = new Member(200L, "member200");
+//            em.persist(member);
+
+//            em.flush();
+
+            //준영속
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
+
+//            em.detach(member);
+            em.clear();
+
+            Member member1 = em.find(Member.class, 150L);
 
             System.out.println("=================");
 
